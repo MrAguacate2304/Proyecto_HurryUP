@@ -22,12 +22,6 @@ public class Player : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
-    {
-        //mision_manager = GameObject.FindGameObjectWithTag("Destination").GetComponent<Mision_Manager>();
-        //mision_manager.startRandPos(gameObject);
-    }
-
     void Update()
     {
 
@@ -57,13 +51,5 @@ public class Player : MonoBehaviour
     {
         steeringInput = inputVector.x;
         accelerationInput = inputVector.y;
-    }
-
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if(mision_manager.tag == "Empresa")
-        {
-            mision_manager.randPos();
-        }
     }
 }
