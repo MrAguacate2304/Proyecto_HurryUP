@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mision_Manager : MonoBehaviour
+public class MisionManager : MonoBehaviour
 {
     public GameObject endPrefab;
 
