@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     float rotationAngle = 0;
 
     Rigidbody2D rb2d;
-    Mision_Manager mision_manager;
+    MisionManager mision_manager;
 
     void Awake ()
     {
