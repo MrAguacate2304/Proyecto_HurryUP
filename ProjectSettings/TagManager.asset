@@ -8,6 +8,7 @@ TagManager:
   - Destination
   - timer
   - gpsArrow
+  - IA
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Background
-  - 
+  - Obstaculos
   - MiniMap
   - 
   - 
