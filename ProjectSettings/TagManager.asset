@@ -8,7 +8,6 @@ TagManager:
   - Destination
   - timer
   - gpsArrow
-  - IA
   layers:
   - Default
   - TransparentFX
