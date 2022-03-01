@@ -20,6 +20,8 @@ public class MisionManager : MonoBehaviour
 
     bool activeMision;
 
+    GameObject currentDestination;
+
     private void Awake()
     {
         activeMision = false;
@@ -38,13 +40,15 @@ public class MisionManager : MonoBehaviour
 
         arrowRb = gpsArrow.GetComponent<Rigidbody2D>();
 
-        maxVectors = 3;
+        maxVectors = 5;
 
         endPosition = new Vector2[maxVectors];
 
-        endPosition[0] = new Vector2(150f, 212f);
-        endPosition[1] = new Vector2(525f, -1070f);
-        endPosition[2] = new Vector2(-240f, -515f);        
+        endPosition[0] = new Vector2(1112f, -522f);
+        endPosition[1] = new Vector2(1312f, -118f);
+        endPosition[2] = new Vector2(650f, -663f);
+        endPosition[3] = new Vector2(125f, -1063f);
+        endPosition[4] = new Vector2(89f, 177f);
     }
 
 
@@ -68,7 +72,7 @@ public class MisionManager : MonoBehaviour
     {
         numrandom = Random.Range(0, maxVectors);
         Debug.Log(numrandom);
-        Instantiate(endPrefab, endPosition[numrandom], Quaternion.identity);
+        currentDestination = Instantiate(endPrefab, endPosition[numrandom], Quaternion.identity);
 
         SetTimer();
     }
@@ -102,5 +106,17 @@ public class MisionManager : MonoBehaviour
         Vector2 direction = endPosition[numrandom] - playerPos;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         arrowRb.rotation = angle - 90;
+    }
+
+    public void EndMission()
+    {
+        timer.SetActive(false);
+        gpsArrow.SetActive(false);
+        Debug.Log("Mision finalizada");
+
+        activeMision = false;
+
+        Destroy(currentDestination);
+        
     }
 }

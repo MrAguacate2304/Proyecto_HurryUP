@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8934876450228209045}
   - component: {fileID: 239372441086284921}
+  - component: {fileID: 2196699692974829168}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: charco
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +83,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2196699692974829168
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562000539189956346}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.29003906, y: -0.84802246}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 16, y: 16}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 10.093018, y: 10.064941}
+  m_EdgeRadius: 0
 --- !u!1 &8032066665510214179
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +120,7 @@ GameObject:
   - component: {fileID: 6904799279461016740}
   m_Layer: 0
   m_Name: charco
-  m_TagString: Untagged
+  m_TagString: charco
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8032066665510214179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -209.90181, y: 298.5946, z: -434.4514}
+  m_LocalPosition: {x: -209.96, y: 298.5946, z: -434.4514}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8934876450228209045}

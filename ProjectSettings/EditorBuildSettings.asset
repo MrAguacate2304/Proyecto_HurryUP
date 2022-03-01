@@ -9,12 +9,24 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: f0dd5cccf1b824341884873ee1433d5a
+    path: Assets/Scenes/Introduccion.unity
+    guid: 0ce4ee04343254c4aa7ef032c5cf7f04
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: ef18f3618afa83b438e0dcfffa966e6c
+  - enabled: 1
+    path: Assets/Scenes/OptionsMenu.unity
+    guid: 56e7f7dab1420b44f8a5f1fd770f9d04
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: d2983a6a89655844ba7fd144a0bf727a
   - enabled: 1
     path: Assets/Scenes/In_Game.unity
     guid: d41de979eef4b1f40839437a4b3aacfd
   - enabled: 1
-    path: Assets/Scenes/Empresa.unity
-    guid: 7db8d530e78365e469aca695c65b2445
+    path: Assets/Scenes/CompanyMenu.unity
+    guid: f0669838d165d4e4399c2823aa35e681
+  - enabled: 1
+    path: Assets/Scenes/WorkshopMenu.unity
+    guid: ed3c86df7723f114c9eb5550b81c2035
   m_configObjects: {}

@@ -9,6 +9,7 @@ TagManager:
   - timer
   - gpsArrow
   - IA
+  - charco
   layers:
   - Default
   - TransparentFX
