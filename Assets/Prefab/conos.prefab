@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4992281444427269969}
   - component: {fileID: 1864181162777581252}
   - component: {fileID: 15032376496656005}
-  - component: {fileID: 806633623078726037}
+  - component: {fileID: 1932787134454641564}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -105,8 +105,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &806633623078726037
-PolygonCollider2D:
+--- !u!61 &1932787134454641564
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -128,16 +128,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.9080151, y: 3.2404509}
-      - {x: -0.81603014, y: 3.1484656}
-      - {x: -3.0564806, y: -1.8856918}
-      - {x: -3.654383, y: -5.5860677}
-      - {x: -2.8041954, y: -6.574233}
-      - {x: 3.7582026, y: -6.5742326}
-      - {x: 4.976331, y: -5.172136}
-      - {x: 4.2404513, y: -2.701722}
+  serializedVersion: 2
+  m_Size: {x: 16, y: 16}
+  m_EdgeRadius: 0
 --- !u!1 &5338837338577706852
 GameObject:
   m_ObjectHideFlags: 0
