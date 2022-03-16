@@ -13,6 +13,7 @@ public class ObjectReset : MonoBehaviour
 
     void Start()
     {
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
         startPos = this.gameObject.transform.position;
         timer = 0;
     }
