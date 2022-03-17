@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4620144735629271601}
   - component: {fileID: 4620144735629271614}
   - component: {fileID: 7745009218740013206}
-  - component: {fileID: 6846964744622712313}
+  - component: {fileID: 1168765376250900057}
   m_Layer: 0
   m_Name: "Se\xF1alDerecha"
   m_TagString: Untagged
@@ -152,7 +152,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6846964744622712313
+--- !u!114 &1168765376250900057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,6 +161,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 191373459565454875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 808ca12dabf169e41a0e8ca9bba449f9, type: 3}
+  m_Script: {fileID: 11500000, guid: f149d7834028f6a4db35be40a4f2316e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

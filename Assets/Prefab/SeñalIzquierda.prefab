@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1300428964074492771}
   - component: {fileID: 1300428964074492775}
   - component: {fileID: 1300428964074492774}
-  - component: {fileID: 1300428964074492770}
+  - component: {fileID: 6668766697947373046}
   m_Layer: 0
   m_Name: "Se\xF1alIzquierda"
   m_TagString: Untagged
@@ -152,7 +152,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.2360644, y: 9.113479}
   m_EdgeRadius: 0
---- !u!114 &1300428964074492770
+--- !u!114 &6668766697947373046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,6 +161,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7044370033593229362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c560b7e2a8ca7146945d2dbb2d25fea, type: 3}
+  m_Script: {fileID: 11500000, guid: f149d7834028f6a4db35be40a4f2316e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
