@@ -31,7 +31,7 @@ public class SeñalRota : MonoBehaviour
         if (contadorStart)
         {
             contador += Time.deltaTime;
-            if (contador >= 5)
+            if (contador >= 120)
             {
                 rota = false;
                 contador = 0;
@@ -41,7 +41,8 @@ public class SeñalRota : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        rota = true;
+        if (collision.gameObject.tag == "Player") { rota = true; }
+        if (collision.gameObject.tag == "IA") { rota = true; }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {

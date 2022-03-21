@@ -6,7 +6,7 @@ public class TopDownCarController : MonoBehaviour
 {
     [Header("Bike Settings")]
 
-    public float accelerationFactor = 30.0f;
+    public float accelerationFactor = 35f;
     public float turnFactor = 3.5f;
 
     float accelerationInput = 0;
@@ -21,6 +21,7 @@ public class TopDownCarController : MonoBehaviour
     void Awake ()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
+        
     }
 
     void FixedUpdate()

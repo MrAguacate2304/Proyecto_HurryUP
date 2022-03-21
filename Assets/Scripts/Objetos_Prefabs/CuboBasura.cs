@@ -41,7 +41,8 @@ public class CuboBasura : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        rota = true;
+        if (collision.gameObject.tag == "Player" ) { rota = true; }
+        if (collision.gameObject.tag == "IA") { rota = true; }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
