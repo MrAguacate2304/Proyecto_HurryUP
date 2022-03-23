@@ -5,18 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class puntoInteres : MonoBehaviour
 {
-    public int escene;
+    public GameObject gMObject;
+    public GameObject menu;
 
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.tag == "Player") {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player")
-        {
-            SceneManager.LoadScene(escene);
+        if (other.tag == "Player") {
+            if (Input.GetKey(KeyCode.E)) {
+                GameManager gameManager = gMObject.GetComponent<GameManager>();
+                gameManager.PauseGame();
+                menu.SetActive(true);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player") {
+            transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 }

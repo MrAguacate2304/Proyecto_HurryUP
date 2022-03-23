@@ -19,12 +19,15 @@ public class MisionManager : MonoBehaviour
     int numrandom = 0;
 
     bool activeMision;
+    bool activeObjective;
+    int nObjectives;
 
     GameObject currentDestination;
 
     private void Awake()
     {
         activeMision = false;
+        activeObjective = false;
 
         timer = GameObject.FindGameObjectWithTag("timer");
         timer.SetActive(false);
@@ -56,8 +59,7 @@ public class MisionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !activeMision)
         {
-            activeMision = true;
-            StartRandomMission();
+            StartMission();
             timer.SetActive(true);
             gpsArrow.SetActive(true);
         }
@@ -65,16 +67,60 @@ public class MisionManager : MonoBehaviour
         if (activeMision)
         {
             RotateArrow();
+
+            if (nObjectives > 0 && !activeObjective)
+            {
+                StartMission();
+            }
+            else if (nObjectives <= 0)
+            {
+                EndMission();
+            }
         }
     }
 
-    public void StartRandomMission()
+    public void StartMission()
     {
+        activeObjective = true;
+
+        timer.SetActive(true);
+        gpsArrow.SetActive(true);
+
         numrandom = Random.Range(0, maxVectors);
         Debug.Log(numrandom);
         currentDestination = Instantiate(endPrefab, endPosition[numrandom], Quaternion.identity);
 
         SetTimer();
+    }
+
+    public void Init5ObjectiveMission()
+    {
+        if (!activeMision) 
+        {
+            nObjectives = 5;
+            activeMision = true;
+            activeObjective = false;
+        }
+    }
+
+    public void Init10ObjectiveMission()
+    {
+        if (!activeMision)
+        {
+            nObjectives = 10;
+            activeMision = true;
+            activeObjective = false;
+        }
+    }
+
+    public void Init15ObjectiveMission()
+    {
+        if (!activeMision)
+        {
+            nObjectives = 15;
+            activeMision = true;
+            activeObjective = false;
+        }
     }
 
     private void SetTimer()
@@ -108,15 +154,19 @@ public class MisionManager : MonoBehaviour
         arrowRb.rotation = angle - 90;
     }
 
-    public void EndMission()
+    public void EndObjective()
+    {
+        Debug.Log("Objetivo alcalnzado");
+        Destroy(currentDestination);
+        nObjectives--;
+        activeObjective = false;
+    }
+
+    void EndMission()
     {
         timer.SetActive(false);
         gpsArrow.SetActive(false);
-        Debug.Log("Mision finalizada");
 
         activeMision = false;
-
-        Destroy(currentDestination);
-        
     }
 }
