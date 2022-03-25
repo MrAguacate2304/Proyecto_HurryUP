@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5639084621163739206}
   - component: {fileID: 5639084621163739202}
   - component: {fileID: 2928004694332730071}
+  - component: {fileID: 838826158681502252}
   m_Layer: 0
   m_Name: CuboBasura
   m_TagString: Untagged
@@ -165,3 +166,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeBreak: 120
+--- !u!114 &838826158681502252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085316571484454199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302b4fc111f4a824aa202e4a6273411d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetTime: 3
