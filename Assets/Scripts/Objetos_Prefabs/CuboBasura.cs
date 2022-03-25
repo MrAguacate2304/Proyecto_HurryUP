@@ -8,7 +8,7 @@ public class CuboBasura : MonoBehaviour
     bool rota;
     float contador;
     bool contadorStart;
-
+    public float TimeBreak;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +31,7 @@ public class CuboBasura : MonoBehaviour
         if (contadorStart)
         {
             contador += Time.deltaTime;
-            if (contador >= 5)
+            if (contador >= TimeBreak)
             {
                 rota = false;
                 contador = 0;
