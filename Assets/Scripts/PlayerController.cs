@@ -17,9 +17,6 @@ public class PlayerController : MonoBehaviour
 	bool charco;
 	float desaceleration = 0;
 
-	public GameObject gMObject;
-	GameManager gameManager;
-
 	public GameObject mManager;
 	MisionManager misionManager;
 
@@ -30,8 +27,6 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		gameManager = gMObject.GetComponent<GameManager>();
-
 		rb = GetComponent<Rigidbody2D>();
 
 		misionManager = mManager.GetComponent<MisionManager>();
@@ -59,14 +54,14 @@ public class PlayerController : MonoBehaviour
         {
             if (!mapOpen)
             {
-				gameManager.PauseGame();
+				GameManager.Instance.PauseGame();
 				miniMapWindow.SetActive(false);
 				mapWindow.SetActive(true);
 				mapOpen = true;
             }
             else if (mapOpen)
             {
-				gameManager.ResumeGame();
+				GameManager.Instance.ResumeGame();
 				miniMapWindow.SetActive(true);
 				mapWindow.SetActive(false);
 				mapOpen = false;
@@ -118,6 +113,5 @@ public class PlayerController : MonoBehaviour
     {
 		desaceleration = 0f;
 	}
-
 
 }

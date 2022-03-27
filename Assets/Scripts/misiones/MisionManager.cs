@@ -57,13 +57,6 @@ public class MisionManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !activeMision)
-        {
-            StartMission();
-            timer.SetActive(true);
-            gpsArrow.SetActive(true);
-        }
-
         if (activeMision)
         {
             RotateArrow();

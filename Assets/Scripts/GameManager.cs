@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    int playerXP;
+    int playerCoins;
+
     void Awake()
     {
         if (Instance == null)
@@ -15,7 +18,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Warning: multiple " + this + "in scene!");
+            Destroy(this.gameObject);
         }
     }
 
@@ -29,6 +32,12 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+
+    public void IncreasePlayerXP(int value) { playerXP += value; }
+    public void IncreasePlayerCoins(int value) { playerCoins += value; }
+    public int GetPlayerXP() { return playerXP; }
+    public int GetPlayerCoins() { return playerCoins; }
 
     public void PauseGame()
     {
