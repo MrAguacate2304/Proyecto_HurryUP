@@ -129,6 +129,22 @@ PrefabInstance:
       propertyPath: miniMapWindow
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6986858191214045970, guid: a962c806741d292468bd2300a8c8679a, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986858191214045970, guid: a962c806741d292468bd2300a8c8679a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 12.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986858191214045970, guid: a962c806741d292468bd2300a8c8679a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986858191214045971, guid: a962c806741d292468bd2300a8c8679a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 867487e343484a04fba56720a2081b90, type: 3}
     - target: {fileID: 6986858191214045975, guid: a962c806741d292468bd2300a8c8679a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -136,6 +152,14 @@ PrefabInstance:
     - target: {fileID: 6986858191214045980, guid: a962c806741d292468bd2300a8c8679a, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986858191214045980, guid: a962c806741d292468bd2300a8c8679a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986858191214045980, guid: a962c806741d292468bd2300a8c8679a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986858191214045980, guid: a962c806741d292468bd2300a8c8679a, type: 3}
       propertyPath: m_LocalPosition.x
