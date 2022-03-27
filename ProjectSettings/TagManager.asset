@@ -10,6 +10,7 @@ TagManager:
   - gpsArrow
   - IA
   - charco
+  - pSpawnPoint
   layers:
   - Default
   - TransparentFX

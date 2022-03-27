@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class CloseMenu : MonoBehaviour
 {
-    public GameObject gMObject;
     public void Close()
     {
-        GameManager gameManager = gMObject.GetComponent<GameManager>();
-        gameManager.ResumeGame();
+        GameManager.Instance.ResumeGame();
         this.gameObject.SetActive(false);
     }
 }

@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 	public GameObject mapWindow;
 	bool mapOpen = false;
 
+	public GameObject spawnPoint;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -31,7 +33,9 @@ public class PlayerController : MonoBehaviour
 
 		misionManager = mManager.GetComponent<MisionManager>();
 
-		this.gameObject.transform.position = new Vector2(1255, -1150);
+		Vector2 spawnPos = new Vector2(spawnPoint.transform.position.x, spawnPoint.transform.position.y);
+
+		this.gameObject.transform.position = new Vector3(spawnPos.x, spawnPos.y, this.transform.position.z);
 
 		charco = false;
 		charcoTimer = 0;
