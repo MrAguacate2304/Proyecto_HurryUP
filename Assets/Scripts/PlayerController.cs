@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
 
 	public GameObject miniMapWindow;
 	public GameObject mapWindow;
+	public GameObject PauseWindow;
 	bool mapOpen = false;
+	bool pause = false;
 
 	public GameObject spawnPoint;
 
@@ -71,7 +73,20 @@ public class PlayerController : MonoBehaviour
 				mapOpen = false;
 			}
         }
-    }
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			if (!pause)
+			{
+				OpenPauseMenu();
+
+			}
+			else if (pause)
+			{
+				ClosePauseMenu();
+
+			}
+		}
+	}
 	// Update is called once per frame
 	void FixedUpdate()
 	{
@@ -117,5 +132,19 @@ public class PlayerController : MonoBehaviour
     {
 		desaceleration = 0f;
 	}
+    public void OpenPauseMenu()
+    {
+        GameManager.Instance.PauseGame();
+        miniMapWindow.SetActive(false);
+        PauseWindow.SetActive(true);
+        pause = true;
+    }
+    public void ClosePauseMenu()
+    {
+        GameManager.Instance.ResumeGame();
+        miniMapWindow.SetActive(true);
+        PauseWindow.SetActive(false);
+        pause = false;
+    }
 
 }
