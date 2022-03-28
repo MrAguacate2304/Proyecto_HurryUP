@@ -27,6 +27,12 @@ public class MisionManager : MonoBehaviour
 
     GameObject currentDestination;
 
+    public GameObject tutorialGO;
+    TutorialManager tutoManager;
+    bool tutorial = false;
+    int tutorialObjective = 0;
+    Vector2[] tutoPosition;
+
     private void Awake()
     {
         activeMision = false;
@@ -47,6 +53,8 @@ public class MisionManager : MonoBehaviour
 
         arrowRb = gpsArrow.GetComponent<Rigidbody2D>();
 
+        tutoManager = tutorialGO.GetComponent<TutorialManager>();
+
         maxVectors = 11;
 
         endPosition = new Vector2[maxVectors];
@@ -62,6 +70,13 @@ public class MisionManager : MonoBehaviour
         endPosition[8] = new Vector2(637f, -1252f);
         endPosition[9] = new Vector2(-185f, -1236f);
         endPosition[10] = new Vector2(1286f, -698f);
+
+
+        tutoPosition = new Vector2[4];
+        tutoPosition[0] = new Vector2(80f, 0f);
+        tutoPosition[1] = new Vector2(-180f, 100f);
+        tutoPosition[2] = new Vector2(13f, 180f);
+        tutoPosition[3] = new Vector2(360f, 860f);
     }
 
 
@@ -70,7 +85,8 @@ public class MisionManager : MonoBehaviour
         if (activeMision)
         {
             pSpriteRenderer.sprite = pWorking;
-            RotateArrow();
+
+            if (activeObjective) { RotateArrow(); }
 
             if (nObjectives > 0 && !activeObjective)
             {
@@ -84,6 +100,43 @@ public class MisionManager : MonoBehaviour
         else
         {
             pSpriteRenderer.sprite = pNormal;
+        }
+
+        if (tutorial)
+        {
+            pSpriteRenderer.sprite = pWorking;
+            gpsArrow.SetActive(true);
+
+            if (activeObjective) { RotateArrow(); }
+            
+            if (tutorialObjective == 0 && !activeObjective) {
+                tutoManager.showMessage1();
+                currentDestination = Instantiate(endPrefab, tutoPosition[tutorialObjective], Quaternion.identity);
+                activeObjective = true;
+            }
+            else if (tutorialObjective == 1 && !activeObjective) {
+                tutoManager.showMessage2();
+                currentDestination = Instantiate(endPrefab, tutoPosition[tutorialObjective], Quaternion.identity);
+                activeObjective = true;
+            }
+            else if (tutorialObjective == 2 && !activeObjective) {
+                currentDestination = Instantiate(endPrefab, tutoPosition[tutorialObjective], Quaternion.identity);
+                activeObjective = true;
+            }
+            else if (tutorialObjective == 3 && !activeObjective) {
+                tutoManager.showMessage3();
+                currentDestination = Instantiate(endPrefab, tutoPosition[tutorialObjective], Quaternion.identity);
+                activeObjective = true;
+            }
+            else if (tutorialObjective < 0 || tutorialObjective > 3) { 
+                tutorial = false;
+            }
+
+        }
+        else
+        {
+            pSpriteRenderer.sprite = pNormal;
+            gpsArrow.SetActive(false);
         }
     }
 
@@ -157,7 +210,7 @@ public class MisionManager : MonoBehaviour
     void RotateArrow()
     {
         Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-        Vector2 direction = endPosition[numrandom] - playerPos;
+        Vector2 direction = new Vector2(currentDestination.transform.position.x, currentDestination.transform.position.y) - playerPos;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         arrowRb.rotation = angle - 90;
     }
@@ -166,7 +219,8 @@ public class MisionManager : MonoBehaviour
     {
         Debug.Log("Objetivo alcalnzado");
         Destroy(currentDestination);
-        nObjectives--;
+        if (activeMision) { nObjectives--; }
+        else if (tutorial) { tutorialObjective++; }
         activeObjective = false;
     }
 
@@ -177,4 +231,11 @@ public class MisionManager : MonoBehaviour
 
         activeMision = false;
     }
+
+    public void StartTutorial()
+    {
+        tutorial = true;
+        tutorialObjective = 0;
+    }
+
 }

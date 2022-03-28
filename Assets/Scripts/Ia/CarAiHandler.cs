@@ -8,7 +8,7 @@ public class CarAiHandler : MonoBehaviour
 
     [Header("Ai settings")]
     Vector3 targetPosition = Vector3.zero;
-    Transform targetTransform = null;
+    //Transform targetTransform = null;
 
     float orignalMaximumSpeed = 200;
 
