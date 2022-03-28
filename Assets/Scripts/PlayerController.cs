@@ -78,12 +78,10 @@ public class PlayerController : MonoBehaviour
 			if (!pause)
 			{
 				OpenPauseMenu();
-
 			}
 			else if (pause)
 			{
 				ClosePauseMenu();
-
 			}
 		}
 	}

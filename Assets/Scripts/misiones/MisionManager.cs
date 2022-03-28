@@ -16,6 +16,9 @@ public class MisionManager : MonoBehaviour
 
     GameObject player;
 
+    SpriteRenderer pSpriteRenderer;
+    public Sprite pNormal, pWorking;
+
     int numrandom = 0;
 
     bool activeMision;
@@ -39,11 +42,12 @@ public class MisionManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        pSpriteRenderer = player.GetComponent<SpriteRenderer>();
         timerController = timer.GetComponent<TimerController>();
 
         arrowRb = gpsArrow.GetComponent<Rigidbody2D>();
 
-        maxVectors = 5;
+        maxVectors = 11;
 
         endPosition = new Vector2[maxVectors];
 
@@ -52,6 +56,12 @@ public class MisionManager : MonoBehaviour
         endPosition[2] = new Vector2(650f, -663f);
         endPosition[3] = new Vector2(125f, -1063f);
         endPosition[4] = new Vector2(89f, 177f);
+        endPosition[5] = new Vector2(1317f, 206f);
+        endPosition[6] = new Vector2(849f, -179f);
+        endPosition[7] = new Vector2(29f, -862f);
+        endPosition[8] = new Vector2(637f, -1252f);
+        endPosition[9] = new Vector2(-185f, -1236f);
+        endPosition[10] = new Vector2(1286f, -698f);
     }
 
 
@@ -59,6 +69,7 @@ public class MisionManager : MonoBehaviour
     {
         if (activeMision)
         {
+            pSpriteRenderer.sprite = pWorking;
             RotateArrow();
 
             if (nObjectives > 0 && !activeObjective)
@@ -69,6 +80,10 @@ public class MisionManager : MonoBehaviour
             {
                 EndMission();
             }
+        }
+        else
+        {
+            pSpriteRenderer.sprite = pNormal;
         }
     }
 

@@ -540,7 +540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4618172488545653354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1422,6 +1422,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endPrefab: {fileID: 4513994717636762041, guid: 8a8100a6deac9bc4e8aa8b7bbbb7f180, type: 3}
+  pNormal: {fileID: 21300000, guid: 867487e343484a04fba56720a2081b90, type: 3}
+  pWorking: {fileID: 21300000, guid: 5254f96a4d4ff4943b9a1de8dab70612, type: 3}
 --- !u!1 &8526076799154645421
 GameObject:
   m_ObjectHideFlags: 0
