@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MisionManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MisionManager : MonoBehaviour
 
     Vector2[] endPosition;
     int maxVectors;
+    int lastPos = -1;
 
     GameObject timer;
     TimerController timerController;
@@ -24,6 +26,15 @@ public class MisionManager : MonoBehaviour
     bool activeMision;
     bool activeObjective;
     int nObjectives;
+    int currentMaxObjectives;
+    int maxCoins;
+
+    bool notificationShow;
+    float notificationTime;
+    public GameObject notification;
+    public TMP_Text nTitle;
+    public TMP_Text nLine1;
+    public TMP_Text nLine2;
 
     GameObject currentDestination;
 
@@ -37,6 +48,7 @@ public class MisionManager : MonoBehaviour
     {
         activeMision = false;
         activeObjective = false;
+        tutorial = false;
 
         timer = GameObject.FindGameObjectWithTag("timer");
         timer.SetActive(false);
@@ -97,12 +109,7 @@ public class MisionManager : MonoBehaviour
                 EndMission();
             }
         }
-        else
-        {
-            pSpriteRenderer.sprite = pNormal;
-        }
-
-        if (tutorial)
+        else if (tutorial)
         {
             pSpriteRenderer.sprite = pWorking;
             gpsArrow.SetActive(true);
@@ -130,6 +137,7 @@ public class MisionManager : MonoBehaviour
             }
             else if (tutorialObjective < 0 || tutorialObjective > 3) { 
                 tutorial = false;
+                tutoManager.showMessage4();
             }
 
         }
@@ -137,6 +145,18 @@ public class MisionManager : MonoBehaviour
         {
             pSpriteRenderer.sprite = pNormal;
             gpsArrow.SetActive(false);
+        }
+
+        //hide notification
+        if (notificationShow)
+        {
+            notificationTime += Time.deltaTime;
+            if (notificationTime>5)
+            {
+                notification.SetActive(false);
+                notificationShow = false;
+                notificationTime = 0;
+            }
         }
     }
 
@@ -148,7 +168,8 @@ public class MisionManager : MonoBehaviour
         gpsArrow.SetActive(true);
 
         numrandom = Random.Range(0, maxVectors);
-        Debug.Log(numrandom);
+        if(numrandom == lastPos && numrandom < maxVectors/2) { numrandom += 1; }
+        else if (numrandom == lastPos && numrandom > maxVectors / 2) { numrandom -= 1; }
         currentDestination = Instantiate(endPrefab, endPosition[numrandom], Quaternion.identity);
 
         SetTimer();
@@ -159,6 +180,8 @@ public class MisionManager : MonoBehaviour
         if (!activeMision) 
         {
             nObjectives = 5;
+            currentMaxObjectives = 5;
+            maxCoins = 100;
             activeMision = true;
             activeObjective = false;
         }
@@ -169,6 +192,8 @@ public class MisionManager : MonoBehaviour
         if (!activeMision)
         {
             nObjectives = 10;
+            currentMaxObjectives = 10;
+            maxCoins = 300;
             activeMision = true;
             activeObjective = false;
         }
@@ -179,6 +204,8 @@ public class MisionManager : MonoBehaviour
         if (!activeMision)
         {
             nObjectives = 15;
+            currentMaxObjectives = 15;
+            maxCoins = 500;
             activeMision = true;
             activeObjective = false;
         }
@@ -194,8 +221,8 @@ public class MisionManager : MonoBehaviour
 
         while (distance>0)
         {
-            sec += 5;
-            distance -= 100;
+            sec += 4;           //segundos
+            distance -= 100;    //metros
         }
 
         while (sec >= 60)
@@ -217,7 +244,28 @@ public class MisionManager : MonoBehaviour
 
     public void EndObjective()
     {
-        Debug.Log("Objetivo alcalnzado");
+        if (!tutorial)
+        {
+            if (timerController.lose)
+            {
+                nTitle.text = "ENTREGA PERDIDA";
+                nLine1.text = "0 XP";
+                nLine2.text = "-15 $";
+                notification.SetActive(true);
+                notificationShow = true;
+                maxCoins -= 15;
+            }
+            else if (!timerController.lose)
+            {
+                //mensaje objetivo alcanzado
+                nTitle.text = "ENTREGA EXITOSA";
+                nLine1.text = ((currentMaxObjectives - nObjectives) + 1) + " / " + currentMaxObjectives;
+                nLine2.text = "+" + timerController.restTime + " XP";
+                notification.SetActive(true);
+                notificationShow = true;
+                GameManager.Instance.IncreasePlayerXP(timerController.restTime);
+            }
+        }
         Destroy(currentDestination);
         if (activeMision) { nObjectives--; }
         else if (tutorial) { tutorialObjective++; }
@@ -230,6 +278,14 @@ public class MisionManager : MonoBehaviour
         gpsArrow.SetActive(false);
 
         activeMision = false;
+        //mostrar mensaje fin mision +recompensa
+        nTitle.text = "JORNADA FINALIZADA";
+        nLine1.text = "+50 XP";
+        nLine2.text = "+" + maxCoins + " $";
+        notification.SetActive(true);
+        notificationShow = true;
+        GameManager.Instance.IncreasePlayerCoins(maxCoins);
+        GameManager.Instance.IncreasePlayerXP(50);
     }
 
     public void StartTutorial()

@@ -16,7 +16,10 @@ public class TopDownCarController : MonoBehaviour
     //float steeringAmount;
 
     Rigidbody2D carRigidbody2D;
-    
+
+    bool playerCollision = false;
+    bool stoped = false;
+    float counter;
 
     void Awake ()
     {
@@ -26,7 +29,17 @@ public class TopDownCarController : MonoBehaviour
 
     void FixedUpdate()
     {
-        ApplyEngineForce();
+        if (!playerCollision && stoped)
+        {
+            counter += Time.fixedDeltaTime;
+            if (counter > 5)
+            {
+                stoped = false;
+                counter = 0;
+            }
+        }
+
+        if (!playerCollision && !stoped) { ApplyEngineForce(); }
 
         ApplySteering();
     }
@@ -60,4 +73,20 @@ public class TopDownCarController : MonoBehaviour
         return carRigidbody2D.velocity.magnitude;
     }
 
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerCollision = true;
+            stoped = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerCollision = false;
+        }
+    }
 }

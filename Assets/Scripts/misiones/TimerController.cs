@@ -8,14 +8,20 @@ public class TimerController : MonoBehaviour
 {
     [SerializeField] TMP_Text countText;
 
+    public GameObject mManagerObj;
+    MisionManager mManager;
+
     private float rest;
     private bool counting;
     
     [HideInInspector] public bool lose;
+    [HideInInspector] public int restTime;
 
-    private void Awake()
+    private void Start()
     {
         lose = false;
+
+        mManager = mManagerObj.GetComponent<MisionManager>();
     }
 
     private void Update()
@@ -23,6 +29,7 @@ public class TimerController : MonoBehaviour
         if (counting)
         {
             rest -= Time.deltaTime;
+            restTime = (int)rest;
             if (rest < 1)
             {
                 PauseCount();
@@ -48,8 +55,9 @@ public class TimerController : MonoBehaviour
 
     private void CountFinish()
     {
-        Debug.Log("se acabo el tiempo");
         lose = true;
+        mManager.EndObjective();
+        lose = false;
     }
 
 }

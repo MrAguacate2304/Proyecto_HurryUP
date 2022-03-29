@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Distance_Stop : MonoBehaviour
 {
-    private BoxCollider2D col;
-
     TopDownCarController topDownCarController;
 
     public GameObject car;
