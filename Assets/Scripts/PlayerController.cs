@@ -60,14 +60,14 @@ public class PlayerController : MonoBehaviour
         {
             if (!mapOpen)
             {
-				GameManager.Instance.PauseGame();
+				//GameManager.Instance.PauseGame();
 				miniMapWindow.SetActive(false);
 				mapWindow.SetActive(true);
 				mapOpen = true;
             }
             else if (mapOpen)
             {
-				GameManager.Instance.ResumeGame();
+				//GameManager.Instance.ResumeGame();
 				miniMapWindow.SetActive(true);
 				mapWindow.SetActive(false);
 				mapOpen = false;
