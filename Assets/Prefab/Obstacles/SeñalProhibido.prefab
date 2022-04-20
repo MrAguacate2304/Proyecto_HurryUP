@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7485681980237471600}
   - component: {fileID: 854907584}
   - component: {fileID: 5202132224815280047}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "Se\xF1alProhibido"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

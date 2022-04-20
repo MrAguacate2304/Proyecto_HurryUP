@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1300428964074492775}
   - component: {fileID: 1300428964074492774}
   - component: {fileID: 6668766697947373046}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "Se\xF1alIzquierda"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

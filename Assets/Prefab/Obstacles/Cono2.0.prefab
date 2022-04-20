@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2550248973231037071}
   - component: {fileID: 1699491572251981200}
   - component: {fileID: 7289182507843205190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cono2.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

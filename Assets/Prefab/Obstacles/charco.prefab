@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7514098745783962784}
   - component: {fileID: 7514098745783962815}
   - component: {fileID: 7514098745783962814}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: charco
   m_TagString: charco
   m_Icon: {fileID: 0}

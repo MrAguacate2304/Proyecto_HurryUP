@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3425446956829103862}
   - component: {fileID: 5411840202494004311}
   - component: {fileID: 1859211033173091219}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SemaforoAmbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2011922015300450005}
   - component: {fileID: 2011922015300450002}
   - component: {fileID: 2011922015300450003}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Farola
   m_TagString: Untagged
   m_Icon: {fileID: 0}

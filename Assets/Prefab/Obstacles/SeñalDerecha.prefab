@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4620144735629271614}
   - component: {fileID: 7745009218740013206}
   - component: {fileID: 1168765376250900057}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "Se\xF1alDerecha"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

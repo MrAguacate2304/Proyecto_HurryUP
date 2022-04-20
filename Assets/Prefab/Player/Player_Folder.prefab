@@ -49,11 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5307940240564759003, guid: b20074441a9eb1044a958517319143e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1249.7
       objectReference: {fileID: 0}
     - target: {fileID: 5307940240564759003, guid: b20074441a9eb1044a958517319143e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1156.1
       objectReference: {fileID: 0}
     - target: {fileID: 5307940240564759003, guid: b20074441a9eb1044a958517319143e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -89,6 +89,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b20074441a9eb1044a958517319143e1, type: 3}
+--- !u!1 &1776618439075200083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5307940240564758996, guid: b20074441a9eb1044a958517319143e1, type: 3}
+  m_PrefabInstance: {fileID: 5840683317172721031}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1776618439075200092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5307940240564759003, guid: b20074441a9eb1044a958517319143e1, type: 3}
@@ -109,6 +114,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1164.9
       objectReference: {fileID: 0}
+    - target: {fileID: 6986858190523525130, guid: a962c806741d292468bd2300a8c8679a, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 6986858191214045968, guid: a962c806741d292468bd2300a8c8679a, type: 3}
       propertyPath: gMObject
       value: 
@@ -124,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 6986858191214045968, guid: a962c806741d292468bd2300a8c8679a, type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1776618439075200083}
     - target: {fileID: 6986858191214045968, guid: a962c806741d292468bd2300a8c8679a, type: 3}
       propertyPath: miniMapWindow
       value: 

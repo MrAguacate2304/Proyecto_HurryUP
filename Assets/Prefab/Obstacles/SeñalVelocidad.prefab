@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4772574382460334477}
   - component: {fileID: 4772574382460334474}
   - component: {fileID: 8016205665268028595}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "Se\xF1alVelocidad"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
