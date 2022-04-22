@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 	bool charco;
 	float desaceleration = 0;
 
+	public bool isMoving = false;
+
 	public GameObject mManager;
 	MisionManager misionManager;
 
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject PauseWindow;
 	bool mapOpen = false;
 	bool pause = false;
+	
 
 	public GameObject spawnPoint;
 
@@ -45,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
     {
+		isMoving = false;
+
 		if (charco)
         {
 			charcoTimer += Time.deltaTime;
@@ -93,10 +98,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("Vertical") > 0)
         {
 			speed = Input.GetAxis("Vertical") * (accelerationPower - desaceleration);
-        }
+			isMoving = true;
+
+		}
         else
         {
 			speed = Input.GetAxis("Vertical") * (accelerationPower - desaceleration) * 0.2f;
+			isMoving = true;
 		}
 		direction = Mathf.Sign(Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.up)));
 		rb.rotation += steeringAmount * steeringPower * rb.velocity.magnitude * direction;

@@ -8,6 +8,9 @@ public class TopDownCarController : MonoBehaviour
 
     public float accelerationFactor = 35f;
     public float turnFactor = 3.5f;
+    public float maxCounter = 5f;
+
+    public PlayerController player;
 
     float accelerationInput = 0;
     float steeringInput = 0;
@@ -16,6 +19,7 @@ public class TopDownCarController : MonoBehaviour
     //float steeringAmount;
 
     Rigidbody2D carRigidbody2D;
+    BoxCollider2D carBoxCollider2D;
 
     bool playerCollision = false;
     bool stoped = false;
@@ -24,7 +28,12 @@ public class TopDownCarController : MonoBehaviour
     void Awake ()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
+        carBoxCollider2D = GetComponent<BoxCollider2D>();
         
+    }
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerController>();
     }
 
     void FixedUpdate()
@@ -32,10 +41,18 @@ public class TopDownCarController : MonoBehaviour
         if (!playerCollision && stoped)
         {
             counter += Time.fixedDeltaTime;
-            if (counter > 5)
+            if (counter > maxCounter)
             {
-                stoped = false;
-                counter = 0;
+                
+                if (gameObject.tag == "Npc")
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    stoped = false;
+                    counter = 0;
+                }
             }
         }
 
@@ -75,10 +92,26 @@ public class TopDownCarController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if ((other.gameObject.tag == "Player") && player.isMoving == true)
         {
             playerCollision = true;
             stoped = true;
+
+            if (gameObject.tag == "Npc")
+            {
+                carBoxCollider2D.isTrigger = true;
+            }
+        }
+        
+        if (other.gameObject.tag == "Car")
+        {
+            playerCollision = true;
+            stoped = true;
+
+            if (gameObject.tag == "Npc")
+            {
+                carBoxCollider2D.isTrigger = true;
+            }
         }
     }
 

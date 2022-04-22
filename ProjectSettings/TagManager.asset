@@ -11,6 +11,7 @@ TagManager:
   - IA
   - charco
   - pSpawnPoint
+  - Npc
   layers:
   - Default
   - TransparentFX
