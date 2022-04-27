@@ -6,12 +6,14 @@ public class SemaforoAmbar : MonoBehaviour
 {
     float contador;
     Animator animator;
+    AudioSource crashAudio;
     bool on;
     bool contadorStart;
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
+        crashAudio = gameObject.GetComponent<AudioSource>();
         on = false;
         contador = 0;
     }
@@ -45,6 +47,10 @@ public class SemaforoAmbar : MonoBehaviour
         {
             animator.SetBool("On", false);
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player") { crashAudio.Play(); }
     }
 
 }

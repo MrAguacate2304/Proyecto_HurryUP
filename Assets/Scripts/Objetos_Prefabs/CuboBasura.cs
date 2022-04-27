@@ -5,6 +5,8 @@ using UnityEngine;
 public class CuboBasura : MonoBehaviour
 {
     Animator animator;
+    AudioSource crashAudio;
+
     bool rota;
     float contador;
     bool contadorStart;
@@ -13,6 +15,7 @@ public class CuboBasura : MonoBehaviour
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
+        crashAudio = gameObject.GetComponent<AudioSource>();
         rota = false;
         contador = 0;
     }
@@ -41,7 +44,7 @@ public class CuboBasura : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" ) { rota = true; }
+        if (collision.gameObject.tag == "Player" ) { rota = true; crashAudio.Play();}
         if (collision.gameObject.tag == "IA") { rota = true; }
     }
     private void OnCollisionExit2D(Collision2D collision)
