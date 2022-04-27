@@ -8,6 +8,8 @@ public class SeñalRota : MonoBehaviour
     Animator animator;
     AudioSource crashAudio;
 
+    //public GameObject crashParticle;
+
     bool rota;
     float contador;
     bool contadorStart;
@@ -46,8 +48,13 @@ public class SeñalRota : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player") { rota = true; crashAudio.Play(); }
-        if (collision.gameObject.tag == "IA") { rota = true; }
+        if (collision.gameObject.tag == "Player") 
+        {
+            rota = true; 
+            crashAudio.Play(); 
+            //Instantiate(crashParticle, transform.position, Quaternion.identity);
+        }
+        if (collision.gameObject.tag == "IA") { rota = true; }      
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
