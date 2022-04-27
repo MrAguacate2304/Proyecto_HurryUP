@@ -153,9 +153,4 @@ public class PlayerController : MonoBehaviour
         pause = false;
     }
 
-	public float GetVelocityMagnitude()
-	{
-		return rb.velocity.magnitude;
-	}
-
 }
