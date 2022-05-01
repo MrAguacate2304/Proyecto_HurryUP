@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
 	public GameObject miniMapWindow;
 	public GameObject mapWindow;
+	public GameObject mapIcon;
 	public GameObject PauseWindow;
 	bool mapOpen = false;
 	bool pause = false;
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
 	public GameObject spawnPoint;
 
-	// Use this for initialization
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -44,6 +45,10 @@ public class PlayerController : MonoBehaviour
 
 		charco = false;
 		charcoTimer = 0;
+
+		mapOpen = false;
+		mapWindow.SetActive(false);
+		mapIcon.SetActive(false);
 	}
 
 	void Update()
@@ -65,15 +70,15 @@ public class PlayerController : MonoBehaviour
         {
             if (!mapOpen)
             {
-				//GameManager.Instance.PauseGame();
 				miniMapWindow.SetActive(false);
+				mapIcon.SetActive(true);
 				mapWindow.SetActive(true);
 				mapOpen = true;
             }
             else if (mapOpen)
             {
-				//GameManager.Instance.ResumeGame();
 				miniMapWindow.SetActive(true);
+				mapIcon.SetActive(false);
 				mapWindow.SetActive(false);
 				mapOpen = false;
 			}
@@ -90,7 +95,7 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 	}
-	// Update is called once per frame
+
 	void FixedUpdate()
 	{
 

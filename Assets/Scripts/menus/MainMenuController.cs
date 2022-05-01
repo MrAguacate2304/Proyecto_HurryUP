@@ -7,6 +7,7 @@ public class MainMenuController : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject credits;
+    public GameObject coverPage;
     public GameObject tutorialMessage;
 
     void Start()
@@ -14,6 +15,9 @@ public class MainMenuController : MonoBehaviour
         mainMenu.SetActive(true);
         credits.SetActive(false);
         tutorialMessage.SetActive(false);
+
+        if (!GameManager.Instance.introduction) { coverPage.SetActive(true); }
+        else { coverPage.SetActive(false); }
     }
 
     public void openMainMenu()

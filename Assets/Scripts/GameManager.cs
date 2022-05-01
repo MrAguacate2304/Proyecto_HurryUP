@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     int playerXP;
     int playerCoins;
 
+    [HideInInspector] public bool introduction;
+    [HideInInspector] public bool night;
+
     void Awake()
     {
         if (Instance == null)
@@ -24,7 +27,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        introduction = false;
+        night = false;
     }
 
 

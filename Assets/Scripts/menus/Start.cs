@@ -7,9 +7,13 @@ public class Start : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (this.gameObject.activeSelf)
         {
-            SceneManager.LoadScene("MainMenu");
+            if (Input.GetKey(KeyCode.Space))
+            {
+                GameManager.Instance.introduction = true;
+                Destroy(this.gameObject);
+            }
         }
     }
 }

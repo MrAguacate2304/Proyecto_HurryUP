@@ -12,6 +12,7 @@ TagManager:
   - charco
   - pSpawnPoint
   - Npc
+  - Undefined
   layers:
   - Default
   - TransparentFX
