@@ -38,17 +38,10 @@ public class MisionManager : MonoBehaviour
 
     GameObject currentDestination;
 
-    public GameObject tutorialGO;
-    TutorialManager tutoManager;
-    bool tutorial = false;
-    int tutorialObjective = 0;
-    Vector2[] tutoPosition;
-
     private void Awake()
     {
         activeMision = false;
         activeObjective = false;
-        tutorial = false;
 
         timer = GameObject.FindGameObjectWithTag("timer");
         timer.SetActive(false);
@@ -61,11 +54,9 @@ public class MisionManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         pSpriteRenderer = player.GetComponent<SpriteRenderer>();
+
         timerController = timer.GetComponent<TimerController>();
-
         arrowRb = gpsArrow.GetComponent<Rigidbody2D>();
-
-        tutoManager = tutorialGO.GetComponent<TutorialManager>();
 
         maxVectors = 11;
 
@@ -82,13 +73,6 @@ public class MisionManager : MonoBehaviour
         endPosition[8] = new Vector2(637f, -1252f);
         endPosition[9] = new Vector2(-185f, -1236f);
         endPosition[10] = new Vector2(1286f, -698f);
-
-
-        tutoPosition = new Vector2[4];
-        tutoPosition[0] = new Vector2(80f, 0f);
-        tutoPosition[1] = new Vector2(-180f, 100f);
-        tutoPosition[2] = new Vector2(13f, 180f);
-        tutoPosition[3] = new Vector2(360f, 860f);
     }
 
 
@@ -109,38 +93,6 @@ public class MisionManager : MonoBehaviour
                 EndMission();
             }
         }
-        else if (tutorial)
-        {
-            pSpriteRenderer.sprite = pWorking;
-            gpsArrow.SetActive(true);
-
-            if (activeObjective) { RotateArrow(); }
-            
-            if (tutorialObjective == 0 && !activeObjective) {
-                tutoManager.showMessage1();
-                currentDestination = Instantiate(endPrefab, tutoPosition[tutorialObjective], Quaternion.identity);
-                activeObjective = true;
-            }
-            else if (tutorialObjective == 1 && !activeObjective) {
-                tutoManager.showMessage2();
-                currentDestination = Instantiate(endPrefab, tutoPosition[tutorialObjective], Quaternion.identity);
-                activeObjective = true;
-            }
-            else if (tutorialObjective == 2 && !activeObjective) {
-                currentDestination = Instantiate(endPrefab, tutoPosition[tutorialObjective], Quaternion.identity);
-                activeObjective = true;
-            }
-            else if (tutorialObjective == 3 && !activeObjective) {
-                tutoManager.showMessage3();
-                currentDestination = Instantiate(endPrefab, tutoPosition[tutorialObjective], Quaternion.identity);
-                activeObjective = true;
-            }
-            else if (tutorialObjective < 0 || tutorialObjective > 3) { 
-                tutorial = false;
-                tutoManager.showMessage4();
-            }
-
-        }
         else
         {
             pSpriteRenderer.sprite = pNormal;
@@ -151,7 +103,7 @@ public class MisionManager : MonoBehaviour
         if (notificationShow)
         {
             notificationTime += Time.deltaTime;
-            if (notificationTime>5)
+            if (notificationTime > 5)
             {
                 notification.SetActive(false);
                 notificationShow = false;
@@ -244,31 +196,27 @@ public class MisionManager : MonoBehaviour
 
     public void EndObjective()
     {
-        if (!tutorial)
+        if (timerController.lose)
         {
-            if (timerController.lose)
-            {
-                nTitle.text = "ENTREGA PERDIDA";
-                nLine1.text = "0 XP";
-                nLine2.text = "-15 $";
-                notification.SetActive(true);
-                notificationShow = true;
-                maxCoins -= 15;
-            }
-            else if (!timerController.lose)
-            {
-                //mensaje objetivo alcanzado
-                nTitle.text = "ENTREGA EXITOSA";
-                nLine1.text = ((currentMaxObjectives - nObjectives) + 1) + " / " + currentMaxObjectives;
-                nLine2.text = "+" + timerController.restTime + " XP";
-                notification.SetActive(true);
-                notificationShow = true;
-                GameManager.Instance.IncreasePlayerXP(timerController.restTime);
-            }
+            nTitle.text = "ENTREGA PERDIDA";
+            nLine1.text = "0 XP";
+            nLine2.text = "-15 $";
+            notification.SetActive(true);
+            notificationShow = true;
+            maxCoins -= 15;
+        }
+        else if (!timerController.lose)
+        {
+            //mensaje objetivo alcanzado
+            nTitle.text = "ENTREGA EXITOSA";
+            nLine1.text = ((currentMaxObjectives - nObjectives) + 1) + " / " + currentMaxObjectives;
+            nLine2.text = "+" + timerController.restTime + " XP";
+            notification.SetActive(true);
+            notificationShow = true;
+            GameManager.Instance.IncreasePlayerXP(timerController.restTime);
         }
         Destroy(currentDestination);
         if (activeMision) { nObjectives--; }
-        else if (tutorial) { tutorialObjective++; }
         activeObjective = false;
     }
 
@@ -286,12 +234,6 @@ public class MisionManager : MonoBehaviour
         notificationShow = true;
         GameManager.Instance.IncreasePlayerCoins(maxCoins);
         GameManager.Instance.IncreasePlayerXP(50);
-    }
-
-    public void StartTutorial()
-    {
-        tutorial = true;
-        tutorialObjective = 0;
     }
 
 }

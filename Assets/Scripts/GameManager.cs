@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool introduction;
     [HideInInspector] public bool night;
 
+    public GameObject IaCarsPrefab;
+
     void Awake()
     {
         if (Instance == null)
