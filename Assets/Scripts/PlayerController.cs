@@ -30,14 +30,18 @@ public class PlayerController : MonoBehaviour
 	
 	public GameObject spawnPoint;
 
-	public GameObject bikeSprite;
+	GameObject bikeSprite;
 	public Sprite[] bikeSprites;
+
+	AudioSource bikeSound;
 
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
 
 		misionManager = mManager.GetComponent<MisionManager>();
+
+		bikeSound = GetComponent<AudioSource>();
 
 		Vector2 spawnPos = new Vector2(spawnPoint.transform.position.x, spawnPoint.transform.position.y);
 
@@ -94,6 +98,15 @@ public class PlayerController : MonoBehaviour
 				ClosePauseMenu();
 			}
 		}
+
+        if (GameManager.Instance.GetGamePausedBool() && bikeSound.isPlaying)
+        {
+			bikeSound.Stop();
+        }
+        else if (!GameManager.Instance.GetGamePausedBool() && !bikeSound.isPlaying)
+        {
+			bikeSound.Play();
+		}
 	}
 
 	void FixedUpdate()
@@ -104,7 +117,6 @@ public class PlayerController : MonoBehaviour
         {
 			speed = Input.GetAxis("Vertical") * (accelerationPower - desaceleration);
 			isMoving = true;
-
 		}
         else
         {

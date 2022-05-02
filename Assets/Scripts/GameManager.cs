@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    bool gamePaused;
+
     int playerXP;
     int playerCoins;
 
@@ -30,6 +32,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        gamePaused = false;
+
         introduction = false;
         night = false;
         bikeSpriteID = 0;
@@ -56,9 +60,13 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        gamePaused = true;
     }
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        gamePaused = false;
     }
+
+    public bool GetGamePausedBool() { return gamePaused; }
 }
