@@ -24,11 +24,14 @@ public class TopDownCarController : MonoBehaviour
     bool playerCollision = false;
     bool stoped = false;
     float counter;
+    //audio
+    AudioSource audioBeep;
 
     void Awake ()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
         carBoxCollider2D = GetComponent<BoxCollider2D>();
+        audioBeep = GetComponent<AudioSource>();
         
     }
     private void Start()
@@ -89,14 +92,21 @@ public class TopDownCarController : MonoBehaviour
     {
         return carRigidbody2D.velocity.magnitude;
     }
-
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            audioBeep.Play();
+        }
+    }
     private void OnCollisionStay2D(Collision2D other)
     {
         if ((other.gameObject.tag == "Player") && player.isMoving == true)
         {
             playerCollision = true;
             stoped = true;
-
+            //audio
+            
             if (gameObject.tag == "Npc")
             {
                 carBoxCollider2D.isTrigger = true;
