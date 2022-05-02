@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool introduction;
     [HideInInspector] public bool night;
 
-    public GameObject IaCarsPrefab;
+    int bikeSpriteID;
+    bool exhaustSprite;
 
     void Awake()
     {
@@ -31,6 +32,8 @@ public class GameManager : MonoBehaviour
     {
         introduction = false;
         night = false;
+        bikeSpriteID = 0;
+        exhaustSprite = false;
     }
 
 
@@ -44,6 +47,11 @@ public class GameManager : MonoBehaviour
     public void IncreasePlayerCoins(int value) { playerCoins += value; }
     public int GetPlayerXP() { return playerXP; }
     public int GetPlayerCoins() { return playerCoins; }
+
+    public void SetBikeSpriteID(int value) { bikeSpriteID = value; }
+    public void SetExhaustSpriteID(bool value) { exhaustSprite = value; }
+    public int GetBikeSpriteID() { return bikeSpriteID; }
+    public bool GetExhaustSpriteID() { return exhaustSprite; }
 
     public void PauseGame()
     {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
 	Rigidbody2D rb;
 
 	[SerializeField]
@@ -17,7 +16,7 @@ public class PlayerController : MonoBehaviour
 	bool charco;
 	float desaceleration = 0;
 
-	public bool isMoving = false;
+	[HideInInspector] public bool isMoving = false;
 
 	public GameObject mManager;
 	MisionManager misionManager;
@@ -29,9 +28,10 @@ public class PlayerController : MonoBehaviour
 	bool mapOpen = false;
 	bool pause = false;
 	
-
 	public GameObject spawnPoint;
 
+	public GameObject bikeSprite;
+	public Sprite[] bikeSprites;
 
 	void Start()
 	{
@@ -156,6 +156,11 @@ public class PlayerController : MonoBehaviour
         miniMapWindow.SetActive(true);
         PauseWindow.SetActive(false);
         pause = false;
+    }
+
+	public void UpdateSprite()
+    {
+		bikeSprite.GetComponent<SpriteRenderer>().sprite = bikeSprites[GameManager.Instance.GetBikeSpriteID()];
     }
 
 }
