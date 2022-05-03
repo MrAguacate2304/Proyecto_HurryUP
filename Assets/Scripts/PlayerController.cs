@@ -6,10 +6,8 @@ public class PlayerController : MonoBehaviour
 {
 	Rigidbody2D rb;
 
-	[SerializeField]
-	float accelerationPower = 5f;
-	[SerializeField]
-	float steeringPower = 5f;
+	float accelerationPower = 140f;
+	float steeringPower = 0.05f;
 	float steeringAmount, speed, direction;
 
 	float charcoTimer;
@@ -30,8 +28,9 @@ public class PlayerController : MonoBehaviour
 	
 	public GameObject spawnPoint;
 
-	GameObject bikeSprite;
+	public GameObject bikeSprite;
 	public Sprite[] bikeSprites;
+	public GameObject exhaustSprite;
 
 	AudioSource bikeSound;
 
@@ -58,6 +57,9 @@ public class PlayerController : MonoBehaviour
 	void Update()
     {
 		isMoving = false;
+
+		updateAccelerationPower();
+		updateExhaustPipe();
 
 		if (charco)
         {
@@ -111,7 +113,6 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-
 		steeringAmount = -Input.GetAxis("Horizontal");
         if (Input.GetAxis("Vertical") > 0)
         {
@@ -129,7 +130,6 @@ public class PlayerController : MonoBehaviour
 		rb.AddRelativeForce(Vector2.up * speed);
 
 		rb.AddRelativeForce(-Vector2.right * rb.velocity.magnitude * steeringAmount / 2);
-
 	}
 	
 	void OnTriggerEnter2D(Collider2D collision)
@@ -148,13 +148,13 @@ public class PlayerController : MonoBehaviour
 	void Relentizar()
     {
 		desaceleration = accelerationPower / 1.1f;
-
 	}
 
 	void DesRelentizar()
     {
 		desaceleration = 0f;
 	}
+
     public void OpenPauseMenu()
     {
         GameManager.Instance.PauseGame();
@@ -173,6 +173,27 @@ public class PlayerController : MonoBehaviour
 	public void UpdateSprite()
     {
 		bikeSprite.GetComponent<SpriteRenderer>().sprite = bikeSprites[GameManager.Instance.GetBikeSpriteID()];
+    }
+
+	void updateAccelerationPower()
+    {
+        if (GameManager.Instance.GetEngineLvl() == 0) { accelerationPower = 150f; }
+		else if (GameManager.Instance.GetEngineLvl() == 1) { accelerationPower = 170f; }
+		else if (GameManager.Instance.GetEngineLvl() == 2) { accelerationPower = 190f; }
+		else if (GameManager.Instance.GetEngineLvl() == 3) { accelerationPower = 200f; }
+		else { accelerationPower = 140f; }
+	}
+
+	void updateExhaustPipe()
+    {
+        if (exhaustSprite.activeSelf && !GameManager.Instance.GetExhaust())
+        {
+			exhaustSprite.SetActive(false);
+        }
+        else if (!exhaustSprite.activeSelf && GameManager.Instance.GetExhaust())
+        {
+			exhaustSprite.SetActive(true);
+		}
     }
 
 }

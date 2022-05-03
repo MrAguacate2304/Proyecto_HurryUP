@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool introduction;
     [HideInInspector] public bool night;
 
+    int engineLvl;
     int bikeSpriteID;
     bool exhaustSprite;
 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         night = false;
         bikeSpriteID = 0;
         exhaustSprite = false;
+        engineLvl = 0;
     }
 
 
@@ -53,9 +55,11 @@ public class GameManager : MonoBehaviour
     public int GetPlayerCoins() { return playerCoins; }
 
     public void SetBikeSpriteID(int value) { bikeSpriteID = value; }
-    public void SetExhaustSpriteID(bool value) { exhaustSprite = value; }
+    public void SetExhaust(bool value) { exhaustSprite = value; }
+    public void SetEngineLvl(int value) { engineLvl = value; }
+    public int GetEngineLvl() { return engineLvl; }
     public int GetBikeSpriteID() { return bikeSpriteID; }
-    public bool GetExhaustSpriteID() { return exhaustSprite; }
+    public bool GetExhaust() { return exhaustSprite; }
 
     public void PauseGame()
     {

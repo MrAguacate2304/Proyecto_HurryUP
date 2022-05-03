@@ -18,7 +18,7 @@ public class MisionManager : MonoBehaviour
 
     GameObject player;
 
-    SpriteRenderer pSpriteRenderer;
+    //SpriteRenderer pSpriteRenderer;
     public Sprite pNormal, pWorking;
 
     int numrandom = 0;
@@ -53,7 +53,7 @@ public class MisionManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pSpriteRenderer = player.GetComponent<SpriteRenderer>();
+        //pSpriteRenderer = player.GetComponent<SpriteRenderer>();
 
         timerController = timer.GetComponent<TimerController>();
         arrowRb = gpsArrow.GetComponent<Rigidbody2D>();
@@ -80,7 +80,7 @@ public class MisionManager : MonoBehaviour
     {
         if (activeMision)
         {
-            pSpriteRenderer.sprite = pWorking;
+            //pSpriteRenderer.sprite = pWorking;
 
             if (activeObjective) { RotateArrow(); }
 
@@ -95,7 +95,7 @@ public class MisionManager : MonoBehaviour
         }
         else
         {
-            pSpriteRenderer.sprite = pNormal;
+            //pSpriteRenderer.sprite = pNormal;
             gpsArrow.SetActive(false);
         }
 
