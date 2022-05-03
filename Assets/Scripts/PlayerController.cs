@@ -136,7 +136,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Destination")
         {
-			misionManager.EndObjective();
+            if (!GameManager.Instance.tutorialFinished) { misionManager.TutoMissionFinish(); }
+            else { misionManager.EndObjective(); }
         }
         else if (collision.tag == "charco")
         {

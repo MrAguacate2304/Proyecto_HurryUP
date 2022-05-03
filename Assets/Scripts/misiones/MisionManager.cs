@@ -11,24 +11,23 @@ public class MisionManager : MonoBehaviour
     int maxVectors;
     int lastPos = -1;
 
+    //GUI
     GameObject timer;
     TimerController timerController;
     GameObject gpsArrow;
     Rigidbody2D arrowRb;
-
+    //Player
     GameObject player;
+    public GameObject boxSprite;
 
-    //SpriteRenderer pSpriteRenderer;
-    public Sprite pNormal, pWorking;
-
-    int numrandom = 0;
-
+    //Normal Missions
     bool activeMision;
     bool activeObjective;
     int nObjectives;
     int currentMaxObjectives;
     int maxCoins;
 
+    //Notifications
     bool notificationShow;
     float notificationTime;
     public GameObject notification;
@@ -36,6 +35,20 @@ public class MisionManager : MonoBehaviour
     public TMP_Text nLine1;
     public TMP_Text nLine2;
 
+    //Phone
+    public GameObject phone;
+    public TMP_Text pTitle, pContent, pReward;
+    public GameObject pAccept, pCancell;
+
+    //Tutorial
+    [HideInInspector] public int tutorialStep = 0;
+    [HideInInspector] public bool activeTutoStep = false;
+    float tutorialTimer = 0;
+    public GameObject puntoInteresEmpresa;
+    public GameObject puntoInteresTaller;
+    public GameObject puntoInteresCasa;
+
+    int numrandom = 0;
     GameObject currentDestination;
 
     private void Awake()
@@ -53,10 +66,13 @@ public class MisionManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //pSpriteRenderer = player.GetComponent<SpriteRenderer>();
 
         timerController = timer.GetComponent<TimerController>();
         arrowRb = gpsArrow.GetComponent<Rigidbody2D>();
+
+        tutorialStep = 0;
+        activeTutoStep = false;
+        tutorialTimer = 0;
 
         maxVectors = 11;
 
@@ -78,9 +94,134 @@ public class MisionManager : MonoBehaviour
 
     void Update()
     {
-        if (activeMision)
+        
+        if (GameManager.Instance.tutorialFinished == false)
         {
-            //pSpriteRenderer.sprite = pWorking;
+            boxSprite.SetActive(false);
+
+            if (tutorialStep == 0 && !activeTutoStep)
+            {
+                bool bossCall = false;
+                tutorialTimer += Time.deltaTime;
+                if (tutorialTimer >= 10 && !bossCall)
+                {
+                    pTitle.text = "JEFE";
+                    pContent.text = "Necessito que vengas a trabajar, hay un pedido y tu eres el unico disponible. Corre!";
+                    pReward.text = "";
+                    pAccept.SetActive(true);
+                    pCancell.SetActive(false);
+                    phone.SetActive(true);
+                    phone.GetComponent<AudioSource>().Play();
+                    bossCall = true;
+                    activeTutoStep = true;
+                    tutorialTimer = 0;
+                }
+            }
+            else if (tutorialStep == 1)
+            {
+                if (!gpsArrow.activeSelf) { gpsArrow.SetActive(true); }
+
+                currentDestination = puntoInteresEmpresa;
+                RotateArrow();
+
+                activeTutoStep = false;
+            }
+            else if (tutorialStep == 2)
+            {
+                boxSprite.SetActive(true);
+                if (!activeTutoStep)
+                {
+                    currentDestination = Instantiate(endPrefab, new Vector2(-140, -1255), Quaternion.identity);
+                    if (!gpsArrow.activeSelf) { gpsArrow.SetActive(true); }
+                    if (!timer.activeSelf) { timer.SetActive(true); }
+                    timerController.StartCount(5, 0);
+                    activeTutoStep = true;
+                }
+                RotateArrow();
+            }
+            else if (tutorialStep == 3 && !activeTutoStep)
+            {
+                boxSprite.SetActive(false);
+                bool bossCall = false;
+                tutorialTimer += Time.deltaTime;
+                if (tutorialTimer >= 3 && !bossCall)
+                {
+                    pTitle.text = "JEFE";
+                    pContent.text = "Buen trabajo! Antes de volver a trabajar pasate por el taller y gastate el dinero que te has ganado.";
+                    pReward.text = "";
+                    pAccept.SetActive(true);
+                    pCancell.SetActive(false);
+                    phone.SetActive(true);
+                    phone.GetComponent<AudioSource>().Play();
+                    bossCall = true;
+                    activeTutoStep = true;
+                    tutorialTimer = 0;
+                }
+            }
+            else if (tutorialStep == 4)
+            {
+                if (!gpsArrow.activeSelf) { gpsArrow.SetActive(true); }
+
+                currentDestination = puntoInteresTaller;
+                RotateArrow();
+
+                activeTutoStep = false;
+            }
+            else if (tutorialStep == 5 && !activeTutoStep)
+            {
+                GameManager.Instance.night = true;
+                bool bossCall = false;
+                tutorialTimer += Time.deltaTime;
+                if (tutorialTimer >= 5 && !bossCall)
+                {
+                    pTitle.text = "MAMA";
+                    pContent.text = "Ya es tarde, ahora no puedes trabajar. Vuelve a casa a descansar.";
+                    pReward.text = "";
+                    pAccept.SetActive(true);
+                    pCancell.SetActive(false);
+                    phone.SetActive(true);
+                    phone.GetComponent<AudioSource>().Play();
+                    bossCall = true;
+                    activeTutoStep = true;
+                    tutorialTimer = 0;
+                }
+            }
+            else if (tutorialStep == 6)
+            {
+                if (!gpsArrow.activeSelf) { gpsArrow.SetActive(true); }
+
+                currentDestination = puntoInteresCasa;
+                RotateArrow();
+
+                activeTutoStep = false;
+            }
+            else if (tutorialStep == 7 && !activeTutoStep)
+            {
+                bool bossCall = false;
+                tutorialTimer += Time.deltaTime;
+                if (tutorialTimer >= 5 && !bossCall)
+                {
+                    pTitle.text = "JEFE";
+                    pContent.text = "Ayer fue un dia duro. Pero hoy toca trabajar mas. Cuando puedas pasate por la empresa y empieza una jornada de trabajo.";
+                    pReward.text = "";
+                    pAccept.SetActive(true);
+                    pCancell.SetActive(false);
+                    phone.SetActive(true);
+                    phone.GetComponent<AudioSource>().Play();
+                    bossCall = true;
+                    activeTutoStep = true;
+                    tutorialTimer = 0;
+                }
+            }
+            else if (tutorialStep >= 8)
+            {
+                GameManager.Instance.tutorialFinished = true;
+            }
+
+        }
+        else if (activeMision)
+        {
+            boxSprite.SetActive(true);
 
             if (activeObjective) { RotateArrow(); }
 
@@ -95,7 +236,7 @@ public class MisionManager : MonoBehaviour
         }
         else
         {
-            //pSpriteRenderer.sprite = pNormal;
+            boxSprite.SetActive(false);
             gpsArrow.SetActive(false);
         }
 
@@ -131,8 +272,8 @@ public class MisionManager : MonoBehaviour
     {
         if (!activeMision) 
         {
-            nObjectives = 5;
-            currentMaxObjectives = 5;
+            nObjectives = 3;
+            currentMaxObjectives = 3;
             maxCoins = 100;
             activeMision = true;
             activeObjective = false;
@@ -143,8 +284,8 @@ public class MisionManager : MonoBehaviour
     {
         if (!activeMision)
         {
-            nObjectives = 10;
-            currentMaxObjectives = 10;
+            nObjectives = 6;
+            currentMaxObjectives = 6;
             maxCoins = 300;
             activeMision = true;
             activeObjective = false;
@@ -155,8 +296,8 @@ public class MisionManager : MonoBehaviour
     {
         if (!activeMision)
         {
-            nObjectives = 15;
-            currentMaxObjectives = 15;
+            nObjectives = 10;
+            currentMaxObjectives = 10;
             maxCoins = 500;
             activeMision = true;
             activeObjective = false;
@@ -173,7 +314,7 @@ public class MisionManager : MonoBehaviour
 
         while (distance>0)
         {
-            sec += 4;           //segundos
+            sec += 6;           //segundos
             distance -= 100;    //metros
         }
 
@@ -234,6 +375,45 @@ public class MisionManager : MonoBehaviour
         notificationShow = true;
         GameManager.Instance.IncreasePlayerCoins(maxCoins);
         GameManager.Instance.IncreasePlayerXP(50);
+    }
+
+    public void TutoNextStep()
+    {
+        gpsArrow.SetActive(false);
+        timer.SetActive(false);
+        tutorialStep++;
+        activeTutoStep = false;
+        phone.SetActive(false);
+    }
+
+    public void TutoMissionFinish()
+    {
+        if (timerController.lose)
+        {
+            Destroy(currentDestination);
+            gpsArrow.SetActive(false);
+            timer.SetActive(false);
+            pTitle.text = "JEFE";
+            pContent.text = "No has llegado a tiempo! Vuelve a la empresa y intentalo de nuevo.";
+            pReward.text = "";
+            pAccept.SetActive(true);
+            pCancell.SetActive(false);
+            phone.SetActive(true);
+            phone.GetComponent<AudioSource>().Play();
+            activeTutoStep = true;
+            tutorialStep = 0;
+        }
+        else if (!timerController.lose)
+        {
+            Destroy(currentDestination);
+            gpsArrow.SetActive(false);
+            timer.SetActive(false);
+
+            GameManager.Instance.tutorialMission++;
+
+            activeTutoStep = false;
+            tutorialStep++;
+        }
     }
 
 }

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     int playerXP;
     int playerCoins;
 
+    [HideInInspector] public bool tutorialFinished = false;
+    [HideInInspector] public int tutorialMission = 1;
     [HideInInspector] public bool introduction;
     [HideInInspector] public bool night;
 
@@ -35,8 +37,12 @@ public class GameManager : MonoBehaviour
     {
         gamePaused = false;
 
+        tutorialFinished = false;
+        tutorialMission = 1;
+
         introduction = false;
         night = false;
+
         bikeSpriteID = 0;
         exhaustSprite = false;
         engineLvl = 0;

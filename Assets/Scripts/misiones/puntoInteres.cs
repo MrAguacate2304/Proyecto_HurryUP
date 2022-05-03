@@ -16,14 +16,33 @@ public class puntoInteres : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player") {
-            if (Input.GetKey(KeyCode.E)) {
-                GameManager.Instance.PauseGame();
-                menu.SetActive(true);
+        if (menu.tag == "company" || menu.tag == "garage")
+        {
+            if (!GameManager.Instance.night)
+            {
+                if (other.tag == "Player")
+                {
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                        GameManager.Instance.PauseGame();
+                        menu.SetActive(true);
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (other.tag == "Player")
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                    GameManager.Instance.PauseGame();
+                    menu.SetActive(true);
+                }
             }
         }
     }
-
+    
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player") {

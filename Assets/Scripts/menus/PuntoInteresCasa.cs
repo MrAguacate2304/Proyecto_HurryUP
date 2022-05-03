@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PuntoInteresCasa : MonoBehaviour
 {
+    public GameObject menu;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -19,7 +21,8 @@ public class PuntoInteresCasa : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                SceneManager.LoadScene("MainMenu");
+                GameManager.Instance.PauseGame();
+                menu.SetActive(true);
             }
         }
     }

@@ -33,7 +33,8 @@ public class TimerController : MonoBehaviour
             if (rest < 1)
             {
                 PauseCount();
-                CountFinish();
+                if (!GameManager.Instance.tutorialFinished) { TutoCountFinish(); }
+                else  { CountFinish(); }
             }
             int tMin = Mathf.FloorToInt(rest / 60);
             int tSec = Mathf.FloorToInt(rest % 60);
@@ -57,6 +58,13 @@ public class TimerController : MonoBehaviour
     {
         lose = true;
         mManager.EndObjective();
+        lose = false;
+    }
+
+    private void TutoCountFinish()
+    {
+        lose = true;
+        mManager.TutoMissionFinish();
         lose = false;
     }
 
