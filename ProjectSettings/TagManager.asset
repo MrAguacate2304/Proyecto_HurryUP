@@ -15,6 +15,7 @@ TagManager:
   - Undefined
   - company
   - garage
+  - boost
   layers:
   - Default
   - TransparentFX

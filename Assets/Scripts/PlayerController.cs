@@ -144,11 +144,20 @@ public class PlayerController : MonoBehaviour
 			charco = true;
 			Relentizar();
         }
-    }
+		else if (collision.tag == "boost")
+		{
+			charco = true;
+			Boost();
+		}
+	}
 
 	void Relentizar()
     {
 		desaceleration = accelerationPower / 1.1f;
+	}
+	void Boost() 
+	{
+		desaceleration = -accelerationPower / 1.1f;
 	}
 
 	void DesRelentizar()
