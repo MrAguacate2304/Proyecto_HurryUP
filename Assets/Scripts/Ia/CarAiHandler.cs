@@ -6,11 +6,15 @@ using System.Linq;
 public class CarAiHandler : MonoBehaviour
 {
 
+    public enum AIMode { followPlayer, followWaypoints };
+
     [Header("Ai settings")]
+    public AIMode aiMode;
     Vector3 targetPosition = Vector3.zero;
     //Transform targetTransform = null;
 
     float orignalMaximumSpeed = 200;
+    Transform targetTransform = null;
 
     WaypointNode currentWaypoint = null;
     WaypointNode previousWaypoint = null;
@@ -18,6 +22,7 @@ public class CarAiHandler : MonoBehaviour
 
     public float maxSpeed = 200;
     public float skillLevel = 1.0f;
+    public bool startFollow = false;
 
     TopDownCarController topDownCarController;
 
@@ -40,7 +45,17 @@ public class CarAiHandler : MonoBehaviour
     {
         Vector2 inputVector = Vector2.zero;
 
-        FolloWayPoints();
+        switch (aiMode)
+        {
+            case AIMode.followPlayer:
+                StartFollow();
+                break;
+
+            case AIMode.followWaypoints:
+                FolloWayPoints();
+                break;
+        }
+        
 
         inputVector.x = TurnTowardTarget();
         inputVector.y = ApplyThrottleOrBrake(inputVector.x);
@@ -48,7 +63,29 @@ public class CarAiHandler : MonoBehaviour
         topDownCarController.SetInputVector(inputVector);
     }
 
-    void FolloWayPoints()
+    void StartFollow()
+    {
+        if (startFollow == false)
+        {
+            topDownCarController.accelerationFactor = topDownCarController.accelerationFactor * 0;
+        }
+        else
+        {
+            FollowPlayer();
+            Debug.Log("Se Mueve");
+        }
+
+    }
+    void FollowPlayer()
+    {
+        if (targetTransform == null)
+            targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (targetTransform != null)
+            targetPosition = targetTransform.position;
+    }
+
+    public void FolloWayPoints()
     {
         if (currentWaypoint == null)
         {

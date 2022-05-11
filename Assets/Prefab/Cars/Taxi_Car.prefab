@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8cc1acd6428234585230a661bced54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiMode: 1
   maxSpeed: 200
   skillLevel: 1
 --- !u!82 &4587606842105281054

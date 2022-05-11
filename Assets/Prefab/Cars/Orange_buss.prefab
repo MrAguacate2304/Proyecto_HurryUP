@@ -149,6 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelerationFactor: 600
   turnFactor: 2.5
+  maxCounter: 5
+  player: {fileID: 0}
 --- !u!114 &5998594962560669048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8cc1acd6428234585230a661bced54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiMode: 1
   maxSpeed: 200
   skillLevel: 1
 --- !u!1 &9072235752309243122
