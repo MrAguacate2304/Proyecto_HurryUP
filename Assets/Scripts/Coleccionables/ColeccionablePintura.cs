@@ -6,12 +6,11 @@ using UnityEngine.UI;
 public class ColeccionablePintura : MonoBehaviour
 {
     GameManager gamemanager;
-    //public Text textTuerca;
+    public Text textPintura;
     void Start()
     {
         gamemanager = FindObjectOfType<GameManager>();
         gamemanager.pintura = 0;
-        //textTuerca.text = "" + gamemanager.tuerca;
     }
     void Update()
     {
@@ -24,6 +23,7 @@ public class ColeccionablePintura : MonoBehaviour
             gamemanager.pintura++;
             Debug.Log(gamemanager.pintura);
             Destroy(gameObject);
+            textPintura.text = "" + gamemanager.pintura;
         }
 
     }

@@ -112,3 +112,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3931519d7d789d04abe20ee0b4d2b494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textPintura: {fileID: 0}

@@ -6,12 +6,11 @@ using UnityEngine.UI;
 public class ColeccionableTuerca : MonoBehaviour
 {
     GameManager gamemanager;
-    //public Text textTuerca;
+    public Text textTuerca;
     void Start()
     {
         gamemanager = FindObjectOfType<GameManager>();
-        gamemanager.tuerca = 0;
-        //textTuerca.text = "" + gamemanager.tuerca;
+        gamemanager.tuerca = 0; 
     }
     void Update()
     {
@@ -24,6 +23,7 @@ public class ColeccionableTuerca : MonoBehaviour
             gamemanager.tuerca++;
             Debug.Log(gamemanager.tuerca);
             Destroy(gameObject);
+            textTuerca.text = "" + gamemanager.tuerca;
         }
 
     }
