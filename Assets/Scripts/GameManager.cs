@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     int playerXP;
     int playerCoins;
 
-    int tuerca;
-    int pintura;
+    public int tuerca;
+    public int pintura;
 
     [HideInInspector] public bool tutorialFinished = false;
     [HideInInspector] public int tutorialMission = 1;
