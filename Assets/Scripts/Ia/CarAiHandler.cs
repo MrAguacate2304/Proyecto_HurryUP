@@ -11,6 +11,7 @@ public class CarAiHandler : MonoBehaviour
     [Header("Ai settings")]
     public AIMode aiMode;
     Vector3 targetPosition = Vector3.zero;
+    public int runOption = 1;
     //Transform targetTransform = null;
 
     float orignalMaximumSpeed = 200;
@@ -45,13 +46,13 @@ public class CarAiHandler : MonoBehaviour
     {
         Vector2 inputVector = Vector2.zero;
 
-        switch (aiMode)
+        switch (runOption)
         {
-            case AIMode.followPlayer:
-                StartFollow();
+            case 2:
+                FollowPlayer();
                 break;
 
-            case AIMode.followWaypoints:
+            case 1:
                 FolloWayPoints();
                 break;
         }
@@ -63,19 +64,6 @@ public class CarAiHandler : MonoBehaviour
         topDownCarController.SetInputVector(inputVector);
     }
 
-    void StartFollow()
-    {
-        if (startFollow == false)
-        {
-            topDownCarController.accelerationFactor = topDownCarController.accelerationFactor * 0;
-        }
-        else
-        {
-            FollowPlayer();
-            Debug.Log("Se Mueve");
-        }
-
-    }
     void FollowPlayer()
     {
         if (targetTransform == null)

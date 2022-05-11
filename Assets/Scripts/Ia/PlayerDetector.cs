@@ -23,30 +23,15 @@ public class PlayerDetector : MonoBehaviour
     
     void Update()
     {
-        if (startTimer)
-        {
-            timer += Time.deltaTime;
-            Debug.Log(timer);
-        }
-
-        if (exit)
-        {
-            
-            if (timer >= 2)
-            {
-                topDownCarController.accelerationFactor = topDownCarController.accelerationFactor * 35f;
-                carAiHandler.FolloWayPoints();
-                
-            }
-        }
-        
+    
     }
     
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {
-            carAiHandler.startFollow = true;
+            topDownCarController.accelerationFactor = topDownCarController.accelerationFactor * 2f;
+            carAiHandler.runOption = 2;
             startTimer = true;
 
         }
@@ -56,10 +41,8 @@ public class PlayerDetector : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            Debug.Log("sal");
-            timer = 0;
-            exit = true;
-            carAiHandler.startFollow = false;
+            topDownCarController.accelerationFactor = topDownCarController.accelerationFactor / 2f;
+            carAiHandler.runOption = 1;
         }
     }
 }
