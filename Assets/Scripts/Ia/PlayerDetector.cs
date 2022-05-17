@@ -30,7 +30,7 @@ public class PlayerDetector : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            topDownCarController.accelerationFactor = topDownCarController.accelerationFactor * 2f;
+            topDownCarController.accelerationFactor = topDownCarController.accelerationFactor * 1.5f;
             carAiHandler.runOption = 2;
             startTimer = true;
 
@@ -41,7 +41,7 @@ public class PlayerDetector : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            topDownCarController.accelerationFactor = topDownCarController.accelerationFactor / 2f;
+            topDownCarController.accelerationFactor = topDownCarController.accelerationFactor / 1.5f;
             carAiHandler.runOption = 1;
         }
     }
