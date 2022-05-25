@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
 		}
         else
         {
-			speed = Input.GetAxis("Vertical") * (accelerationPower - desaceleration) * 0.2f;
+			speed = Input.GetAxis("Vertical") * (accelerationPower - desaceleration) * 0.4f;
 			isMoving = true;
 		}
 		direction = Mathf.Sign(Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.up)));
