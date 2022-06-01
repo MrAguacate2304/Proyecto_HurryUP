@@ -26,6 +26,7 @@ public class ColeccionableTuerca : MonoBehaviour
             soundManager.SeleccionAudio(0, 0.5f);
             gamemanager.tuerca++;
             Destroy(gameObject);
+            audioPick.Play();
             textTuerca.text = "" + gamemanager.tuerca;
         }
 
