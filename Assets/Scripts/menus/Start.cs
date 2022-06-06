@@ -11,7 +11,7 @@ public class Start : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                GameManager.Instance.introduction = true;
+                //GameManager.Instance.introduction = true;
                 Destroy(this.gameObject);
             }
         }

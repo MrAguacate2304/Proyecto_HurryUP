@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public bool tutorialFinished = false;
     [HideInInspector] public int tutorialMission = 1;
-    [HideInInspector] public bool introduction;
     [HideInInspector] public bool night;
 
     int engineLvl;
@@ -43,7 +42,6 @@ public class GameManager : MonoBehaviour
         tutorialFinished = false;
         tutorialMission = 1;
 
-        introduction = false;
         night = false;
 
         bikeSpriteID = 0;

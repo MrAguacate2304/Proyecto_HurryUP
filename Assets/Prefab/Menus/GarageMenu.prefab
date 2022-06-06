@@ -3046,11 +3046,11 @@ GameObject:
   - component: {fileID: 1880584872683573327}
   m_Layer: 5
   m_Name: GarageMenu
-  m_TagString: Untagged
+  m_TagString: garage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6020627125591025201
 RectTransform:
   m_ObjectHideFlags: 0

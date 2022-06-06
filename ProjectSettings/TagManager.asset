@@ -16,6 +16,9 @@ TagManager:
   - company
   - garage
   - boost
+  - Pintura
+  - Tuerca
+  - house
   layers:
   - Default
   - TransparentFX

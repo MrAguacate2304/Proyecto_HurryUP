@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 7335262405835759636}
   - component: {fileID: 7335262405835759642}
   - component: {fileID: 7335262405835759637}
-  - component: {fileID: 8995275122028527724}
+  - component: {fileID: 715390516585356814}
   m_Layer: 0
   m_Name: Casa
   m_TagString: Untagged
@@ -428,7 +428,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16, y: 16}
   m_EdgeRadius: 0
---- !u!114 &8995275122028527724
+--- !u!114 &715390516585356814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -437,6 +437,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7335262405835759643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb322c72f91d6f4784e3a0552dc3f0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5722cb9784924bb499cf09b64ba06d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu: {fileID: 0}
+  misionManager: {fileID: 0}

@@ -6,14 +6,10 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject credits;
-    public GameObject coverPage;
 
     void Start()
     {
         credits.SetActive(false);
-
-        if (!GameManager.Instance.introduction) { coverPage.SetActive(true); }
-        else { coverPage.SetActive(false); }
     }
 
     public void openMainMenu()
