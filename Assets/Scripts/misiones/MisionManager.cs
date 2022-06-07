@@ -103,10 +103,10 @@ public class MisionManager : MonoBehaviour
             {
                 bool bossCall = false;
                 tutorialTimer += Time.deltaTime;
-                if (tutorialTimer >= 10 && !bossCall)
+                if (tutorialTimer >= 5 && !bossCall)
                 {
                     pTitle.text = "JEFE";
-                    pContent.text = "Necessito que vengas a trabajar, hay un pedido y tu eres el unico disponible. Corre!";
+                    pContent.text = "Necesito que vengas a trabajar, hay un pedido y tu eres el unico disponible. Corre!";
                     pReward.text = "";
                     pAccept.SetActive(true);
                     pCancell.SetActive(false);
@@ -147,7 +147,7 @@ public class MisionManager : MonoBehaviour
                 if (tutorialTimer >= 3 && !bossCall)
                 {
                     pTitle.text = "JEFE";
-                    pContent.text = "Buen trabajo! Antes de volver a trabajar pasate por el taller y gastate el dinero que te has ganado.";
+                    pContent.text = "Buen trabajo! Antes de volver a trabajar pasate por el taller.";
                     pReward.text = "";
                     pAccept.SetActive(true);
                     pCancell.SetActive(false);
@@ -172,10 +172,10 @@ public class MisionManager : MonoBehaviour
                 GameManager.Instance.night = true;
                 bool bossCall = false;
                 tutorialTimer += Time.deltaTime;
-                if (tutorialTimer >= 5 && !bossCall)
+                if (tutorialTimer >= 3 && !bossCall)
                 {
                     pTitle.text = "MAMA";
-                    pContent.text = "Ya es tarde, ahora no puedes trabajar. Vuelve a casa a descansar.";
+                    pContent.text = "Ya es tarde, ahora no puedes trabajar, vuelve a casa a descansar antes de que te pille algun maleante. ";
                     pReward.text = "";
                     pAccept.SetActive(true);
                     pCancell.SetActive(false);

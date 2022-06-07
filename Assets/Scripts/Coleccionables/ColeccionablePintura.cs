@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ColeccionablePintura : MonoBehaviour
 {
-    GameManager gamemanager;
     public Text textPintura;
     AudioSource audioPick;
     private SoundManager soundManager;
@@ -15,19 +14,22 @@ public class ColeccionablePintura : MonoBehaviour
     }
     void Start()
     {
-        gamemanager = FindObjectOfType<GameManager>();
-        gamemanager.pintura = 0;
+        GameManager.Instance.SetPlayerPintura(0);
         audioPick = gameObject.GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        textPintura.text = "" + GameManager.Instance.GetPlayerPintura();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             soundManager.SeleccionAudio(2, 0.5f);
-            gamemanager.pintura++;
+            GameManager.Instance.IncreasePlayerPintura(1);
             Destroy(gameObject);
-            textPintura.text = "" + gamemanager.pintura;
+            
         }
-
     }
 }

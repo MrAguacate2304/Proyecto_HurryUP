@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     int playerXP;
     int playerCoins;
 
-    [HideInInspector] public int tuerca;
-    [HideInInspector] public int pintura;
+    int tuerca;
+    int pintura;
 
     [HideInInspector] public bool tutorialFinished = false;
     [HideInInspector] public int tutorialMission = 1;
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         bikeSpriteID = 0;
         exhaustSprite = false;
         engineLvl = 0;
+
     }
 
 
@@ -65,6 +66,9 @@ public class GameManager : MonoBehaviour
     public int GetPlayerCoins() { return playerCoins; }
     public int GetPlayerTuerca() { return tuerca; }
     public int GetPlayerPintura() { return pintura; }
+
+    public void SetPlayerTuerca(int value) { tuerca = value; }
+    public void SetPlayerPintura(int value) { pintura = value; }
 
     public void SetBikeSpriteID(int value) { bikeSpriteID = value; }
     public void SetExhaust(bool value) { exhaustSprite = value; }

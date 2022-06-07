@@ -71,9 +71,17 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6080239627364196069, guid: 8c4237f52cbd5ad48bd3687db341ec70, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6080239627364196071, guid: 8c4237f52cbd5ad48bd3687db341ec70, type: 3}
       propertyPath: m_Name
       value: EnemiesNpc
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080239627364196071, guid: 8c4237f52cbd5ad48bd3687db341ec70, type: 3}
+      propertyPath: m_TagString
+      value: enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6080239627364196123, guid: 8c4237f52cbd5ad48bd3687db341ec70, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

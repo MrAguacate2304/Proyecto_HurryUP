@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ColeccionableTuerca : MonoBehaviour
 {
-    GameManager gamemanager;
     public Text textTuerca;
     AudioSource audioPick;
     private SoundManager soundManager;
@@ -15,20 +14,22 @@ public class ColeccionableTuerca : MonoBehaviour
     }
     void Start()
     {
-        gamemanager = FindObjectOfType<GameManager>();
-        gamemanager.tuerca = 0;
+        GameManager.Instance.SetPlayerTuerca(0);
         audioPick = gameObject.GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        textTuerca.text = "" + GameManager.Instance.GetPlayerTuerca();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             soundManager.SeleccionAudio(0, 0.5f);
-            gamemanager.tuerca++;
+            GameManager.Instance.IncreasePlayerTuerca(1);
             Destroy(gameObject);
             audioPick.Play();
-            textTuerca.text = "" + gamemanager.tuerca;
         }
-
     }
 }

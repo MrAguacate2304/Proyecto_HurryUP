@@ -151,7 +151,18 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void Relentizar()
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "enemy"){
+			Rigidbody2D otherRb = other.gameObject.GetComponent <Rigidbody2D>();
+			otherRb.constraints = RigidbodyConstraints2D.FreezePosition;
+			if (GameManager.Instance.GetPlayerTuerca() > 2) {
+				GameManager.Instance.SetPlayerTuerca(GameManager.Instance.GetPlayerTuerca() - 2);
+			}
+		}
+    }
+
+    void Relentizar()
     {
 		desaceleration = accelerationPower / 1.1f;
 	}
